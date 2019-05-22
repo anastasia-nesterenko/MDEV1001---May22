@@ -1,0 +1,22 @@
+{
+  "name": "mdev1001---may22",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/letzteleben/MDEV1001---May22.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/letzteleben/MDEV1001---May22/issues"
+  },
+  "homepage": "https://github.com/letzteleben/MDEV1001---May22#readme",
+  "devDependencies": {
+    "sqlite3": "^4.0.8"
+  }
+}
