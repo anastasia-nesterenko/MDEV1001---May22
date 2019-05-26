@@ -20,18 +20,32 @@ db.serialize(function(){
     db.run("INSERT INTO Department VALUES(10001, 'Physics', 'Watson', 90000)");
 
     //Print the room number and building name for those rooms whose capacity is greater than 50.
-    db.each("SELECT Room_number AS 'Room number', Building AS 'Building name' FROM Classroom WHERE Capacity>50", function(err, row){
+    db.each("SELECT Room_number AS 'Room number', Building AS 'Building name' \
+             FROM Classroom \
+             WHERE Capacity>50", function(err, row){
         if (err)
             console.log(err);
         console.log(row);
     });
 
     //Print the names of those departments whose budgets are greater than $85,000.
-    db.each("SELECT Dept_name AS 'Department name' FROM Department WHERE Budget>85000", function(err, row){
+    db.each("SELECT Dept_name AS 'Department name' \
+             FROM Department \
+             WHERE Budget>85000", function(err, row){
+        if (err)
+            console.log(err);
+        console.log(row);
+    }); 
+
+    //For each department, print the total capacity available.
+    db.each("SELECT Department.Dept_name AS 'Department name', \
+            SUM(Classroom.Capacity) AS 'Total capacity' \
+             FROM Department \
+                 INNER JOIN Classroom on Department.Building = Classroom.Building \
+                 GROUP BY Department.Dept_name", function(err, row){
         if (err)
             console.log(err);
         console.log(row);
     });
-
 
 })
