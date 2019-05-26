@@ -19,17 +19,16 @@ db.serialize(function(){
     db.run("INSERT INTO Department VALUES(10001, 'Music', 'Packard', 80000)");
     db.run("INSERT INTO Department VALUES(10001, 'Physics', 'Watson', 90000)");
 
-    db.each("SELECT * FROM Classroom", function(err, row){
+    db.each("SELECT Room_number AS 'Room number', Building AS 'Building name' FROM Classroom WHERE Capacity>50", function(err, row){
         if (err)
             console.log(err);
         console.log(row);
     });
-
-    db.each("SELECT * FROM Department", function(err, row){
+    /* db.each("SELECT * FROM Department", function(err, row){
         if (err)
             console.log(err);
         console.log(row);
-    });
+    }); */
 
 
 })
