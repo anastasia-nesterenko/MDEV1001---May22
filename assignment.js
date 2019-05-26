@@ -12,12 +12,12 @@ db.serialize(function(){
 
     db.run("CREATE TABLE Department (ID NUMBER, Dept_name TEXT, Building TEXT, Budget NUMBER)");
     db.run("INSERT INTO Department VALUES(10001, 'Biology', 'Watson', 90000)");
-    db.run("INSERT INTO Department VALUES(10001, 'Comp. Sci.', 'Taylor', 100000)");
-    db.run("INSERT INTO Department VALUES(10001, 'Elec. Eng.', 'Taylor', 85000)");
-    db.run("INSERT INTO Department VALUES(10001, 'Finance', 'Painter', 120000)");
-    db.run("INSERT INTO Department VALUES(10001, 'History', 'Painter', 50000)");
-    db.run("INSERT INTO Department VALUES(10001, 'Music', 'Packard', 80000)");
-    db.run("INSERT INTO Department VALUES(10001, 'Physics', 'Watson', 90000)");
+    db.run("INSERT INTO Department VALUES(10002, 'Comp. Sci.', 'Taylor', 100000)");
+    db.run("INSERT INTO Department VALUES(10003, 'Elec. Eng.', 'Taylor', 85000)");
+    db.run("INSERT INTO Department VALUES(10004, 'Finance', 'Painter', 120000)");
+    db.run("INSERT INTO Department VALUES(10005, 'History', 'Painter', 50000)");
+    db.run("INSERT INTO Department VALUES(10006, 'Music', 'Packard', 80000)");
+    db.run("INSERT INTO Department VALUES(10007, 'Physics', 'Watson', 90000)");
 
     //Print the room number and building name for those rooms whose capacity is greater than 50.
     db.each("SELECT Room_number AS 'Room number', Building AS 'Building name' \
@@ -39,7 +39,7 @@ db.serialize(function(){
 
     //For each department, print the total capacity available.
     db.each("SELECT Department.Dept_name AS 'Department name', \
-            SUM(Classroom.Capacity) AS 'Total capacity' \
+             SUM(Classroom.Capacity) AS 'Total capacity' \
              FROM Department \
                  INNER JOIN Classroom on Department.Building = Classroom.Building \
                  GROUP BY Department.Dept_name", function(err, row){
